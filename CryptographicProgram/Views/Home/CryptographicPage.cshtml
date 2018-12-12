@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Cryptographic Page";
+}
+
+<div class="image-container default-image">
+    <img src="~/images/brain.jpg" alt="Download image!">
+</div>
+
+<hr class="hr-line">
+
+<div class="input-image">
+    <input type="file" name="import-image" class="save-image" accept="~/image/*">
+    <button class="btn download">Download image</button>
+</div>
+
+<hr class="hr-line">
+
+<div class="main-functional">
+    <div class="encrypt-text">
+        <textarea class="input-text"></textarea>
+        <button class="btn">Encrypt text</button>
+    </div>
+    <div class="decrypt-text">
+        <textarea class="output-text"></textarea>
+        <button class="btn">Decrypt text</button>
+    </div>
+</div>
+
+<environment include="Development">
+    <link rel="stylesheet" href="~/css/cryptographicPageStyle.css" />
+</environment>

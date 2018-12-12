@@ -5,7 +5,6 @@ C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\bin\Debug\
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\bin\Debug\netcoreapp2.1\CryptographicProgram.pdb
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\bin\Debug\netcoreapp2.1\CryptographicProgram.Views.dll
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\bin\Debug\netcoreapp2.1\CryptographicProgram.Views.pdb
-C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.csprojAssemblyReference.cache
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.csproj.CoreCompileInputs.cache
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.RazorAssemblyInfo.cache
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.RazorAssemblyInfo.cs
@@ -16,7 +15,6 @@ C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.RazorCoreGenerate.cache
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\Razor\Views\Home\About.g.cshtml.cs
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\Razor\Views\Home\Contact.g.cshtml.cs
-C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\Razor\Views\Home\Index.g.cshtml.cs
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\Razor\Views\Home\Privacy.g.cshtml.cs
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\Razor\Views\Shared\Error.g.cshtml.cs
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\Razor\Views\Shared\_CookieConsentPartial.g.cshtml.cs
@@ -30,3 +28,5 @@ C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.dll
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.pdb
 C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.csproj.CopyComplete
+C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\Razor\Views\Home\CryptographicPage.g.cshtml.cs
+C:\Users\aner9\source\repos\CryptographicProgram\CryptographicProgram\obj\Debug\netcoreapp2.1\CryptographicProgram.csprojAssemblyReference.cache
