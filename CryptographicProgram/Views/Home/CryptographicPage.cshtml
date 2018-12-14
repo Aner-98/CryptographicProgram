@@ -3,14 +3,16 @@
 }
 
 <div class="image-container default-image">
-    <img src="~/images/brain.jpg" alt="Download image!">
+    <img src="~/images/image.jpg" alt="Download image!">
 </div>
 
 <hr class="hr-line">
 
 <div class="input-image">
-    <input type="file" name="import-image" class="save-image" accept="~/image/*">
-    <button class="btn download">Download image</button>
+    <form method="put" action="file.doc">
+        <button class="btn" type="submit">Save image</button>
+    </form>
+        <a href="~/images/image.jpg" download="image"><button class="btn">Download image</button></a>
 </div>
 
 <hr class="hr-line">

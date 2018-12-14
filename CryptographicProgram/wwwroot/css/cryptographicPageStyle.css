@@ -26,16 +26,9 @@ img {
 .input-image {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     padding: 15px;
-}
-
-.save-image {
-    width: 90%;
-    height: 50px;
-    margin-right: 5px;
-    border: 2px solid rgb(15, 104, 98);
 }
 
 .hr-line {
