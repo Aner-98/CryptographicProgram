@@ -2,17 +2,19 @@
     ViewData["Title"] = "Cryptographic Page";
 }
 
+
 <div class="image-container default-image">
-    <img src="~/images/image.jpg" alt="Download image!">
+    <img src=@CryptographicProgram.Controllers.HomeController.MyPath alt="Download image!">
 </div>
 
 <hr class="hr-line">
 
 <div class="input-image">
-    <form method="put" action="file.doc">
-        <button class="btn" type="submit">Save image</button>
+    <form asp-action="AddFile" asp-controller="Home" method="post" enctype="multipart/form-data">
+        <input class="file_upload" type="file" name="uploadedFile" />
+        <input class="btn" type="submit" value="Save image" />
     </form>
-        <a href="~/images/image.jpg" download="image"><button class="btn">Download image</button></a>
+    <a href=@CryptographicProgram.Controllers.HomeController.MyPath download="image"><button class="btn">Download image</button></a>
 </div>
 
 <hr class="hr-line">

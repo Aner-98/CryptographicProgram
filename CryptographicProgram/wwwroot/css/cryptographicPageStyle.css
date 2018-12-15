@@ -63,6 +63,7 @@ img {
 
 .btn {
     background-color: #aa86d6;
+    align-items: center;
     width: 130px;
     height: 35px;
     border: none;
