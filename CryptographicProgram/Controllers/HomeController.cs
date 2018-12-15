@@ -12,7 +12,10 @@ namespace CryptographicProgram.Controllers
 	public class HomeController : Controller
 	{
 		IHostingEnvironment _appEnvironment;
-		public static string MyPath { get; set; } = "/images/image.jpg";
+
+		public static string ImagePath { get; set; } = "/images/image.jpg";
+		public static string DecryptImageText { get; set; }
+		public static string EncryptImageText { get; set; }
 
 		public HomeController(IHostingEnvironment appEnvironment)
 		{
@@ -29,13 +32,27 @@ namespace CryptographicProgram.Controllers
 		{
 			if (uploadedFile != null)
 			{
-				MyPath = "/images/" + uploadedFile.FileName;
-				using (var fileStream = new FileStream(_appEnvironment.WebRootPath + MyPath, FileMode.Create))
+				ImagePath = "/images/" + uploadedFile.FileName;
+				using (var fileStream = new FileStream(_appEnvironment.WebRootPath + ImagePath, FileMode.Create))
 				{
 					await uploadedFile.CopyToAsync(fileStream);
 				}
 			}
 
+			return RedirectToAction("CryptographicPage");
+		}
+
+		[HttpPost]
+		public IActionResult EncryptText(string encryptText)
+		{
+			EncryptImageText = encryptText;
+			return RedirectToAction("CryptographicPage");
+		}
+
+		[HttpGet]
+		public IActionResult DecryptText()
+		{
+			DecryptImageText = "Helow";
 			return RedirectToAction("CryptographicPage");
 		}
 

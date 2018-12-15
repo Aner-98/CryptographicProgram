@@ -4,7 +4,7 @@
 
 
 <div class="image-container default-image">
-    <img src=@CryptographicProgram.Controllers.HomeController.MyPath alt="Download image!">
+    <img src=@CryptographicProgram.Controllers.HomeController.ImagePath alt="Download image!">
 </div>
 
 <hr class="hr-line">
@@ -14,19 +14,23 @@
         <input class="file_upload" type="file" name="uploadedFile" />
         <input class="btn" type="submit" value="Save image" />
     </form>
-    <a href=@CryptographicProgram.Controllers.HomeController.MyPath download="image"><button class="btn">Download image</button></a>
+    <a href=@CryptographicProgram.Controllers.HomeController.ImagePath download="image"><button class="btn">Download image</button></a>
 </div>
 
 <hr class="hr-line">
 
 <div class="main-functional">
     <div class="encrypt-text">
-        <textarea class="input-text"></textarea>
-        <button class="btn">Encrypt text</button>
+        <form class="input-text" asp-action="EncryptText" asp-controller="Home" method="post">
+            <textarea class="input-text" name="encryptText"></textarea>
+            <input class="btn" type="submit" value="Encrypt text" />
+        </form>
     </div>
     <div class="decrypt-text">
-        <textarea class="output-text"></textarea>
-        <button class="btn">Decrypt text</button>
+        <form class="output-text" asp-action="DecryptText" asp-controller="Home" method="get">
+            <textarea class="output-text">@CryptographicProgram.Controllers.HomeController.DecryptImageText</textarea>
+            <button class="btn">Decrypt text</button>
+        </form>
     </div>
 </div>
 
