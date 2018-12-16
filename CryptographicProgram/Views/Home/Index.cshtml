@@ -1,0 +1,47 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="UTF-8" />
+    <title>Cryptographic Page</title>
+    <link rel="stylesheet" href="~/css/cryptographicPageStyle.css" />
+</head>
+<body>
+    <div class="image-container default-image">
+        <img src=@CryptographicProgram.Controllers.HomeController.ImagePath alt="Download image!">
+    </div>
+
+    <hr class="hr-line">
+
+    <div class="input-image">
+        <form asp-controller="Home" asp-action="AddFile" method="post" enctype="multipart/form-data">
+            <input type="file" name="uploadedFile" />
+            <input class="btn" type="submit" value="Save image" />
+        </form>
+        <a href=@CryptographicProgram.Controllers.HomeController.ImagePath download="image">
+        </a>
+        <button class="btn">Download image</button>
+
+    </div>
+
+    <hr class="hr-line">
+
+    <div class="main-functional">
+        <div class="encrypt-text">
+            <textarea id="encryptText" class="input-text" name="encryptText"></textarea>
+            <input class="btn" type="button" value="Encrypt text" onclick="encodeText();" />
+        </div>
+        <div class="decrypt-text">
+            <textarea id="decryptText" class="output-text">@CryptographicProgram.Controllers.HomeController.DecryptImageText</textarea>
+            <input type="button" class="btn" value="Decrypt text" onclick="getText();">
+        </div>
+    </div>
+    <script src="js/site.js"></script>
+</body>
+</html>

@@ -1,4 +1,25 @@
-﻿// Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-// for details on configuring this project to bundle and minify static web assets.
+﻿var apiUrl = "http://localhost:44314/api/";
 
-// Write your JavaScript code.
+function encodeText() {
+    var text = document.querySelector("#encryptText").value;
+    console.log(text);
+    var request = {
+        method: "GET"
+    };
+
+    var url = apiUrl + "Steganography/GetEncode?text=" + text;
+    fetch(url, request);
+}
+
+function getText() {
+    var request = {
+        method: "GET"
+    };
+
+    var url = apiUrl + "Steganography/SecretText";
+    fetch(url, request)
+        .then(response => console.log(response.json()));
+
+    var textArea = document.querySelector("#decryptText");
+    textArea.value = "Kek";
+}

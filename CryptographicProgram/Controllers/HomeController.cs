@@ -22,11 +22,6 @@ namespace CryptographicProgram.Controllers
 
 		public ViewResult Index()
 		{
-			return View("CryptographicPage");
-		}
-
-		public IActionResult CryptographicPage()
-		{
 			return View();
 		}
 
@@ -42,21 +37,21 @@ namespace CryptographicProgram.Controllers
 				}
 			}
 
-			return RedirectToAction("CryptographicPage");
+			return RedirectToAction("Index");
 		}
 
 		[HttpPost]
 		public IActionResult EncryptText(string encryptText)
 		{
 			EncryptImageText = encryptText;
-			return RedirectToAction("CryptographicPage");
+			return RedirectToAction("Index");
 		}
 
 		[HttpGet]
 		public IActionResult DecryptText()
 		{
-			DecryptImageText = "Helow";
-			return RedirectToAction("CryptographicPage");
+			DecryptImageText = "Hello";
+			return RedirectToAction("Index");
 		}
 	}
 }
