@@ -1,39 +1,42 @@
-﻿@{
-    ViewData["Title"] = "Cryptographic Page";
-}
-
-
-<div class="image-container default-image">
-    <img src=@CryptographicProgram.Controllers.HomeController.ImagePath alt="Download image!">
-</div>
-
-<hr class="hr-line">
-
-<div class="input-image">
-    <form asp-action="AddFile" asp-controller="Home" method="post" enctype="multipart/form-data">
-        <input class="file_upload" type="file" name="uploadedFile" />
-        <input class="btn" type="submit" value="Save image" />
-    </form>
-    <a href=@CryptographicProgram.Controllers.HomeController.ImagePath download="image"><button class="btn">Download image</button></a>
-</div>
-
-<hr class="hr-line">
-
-<div class="main-functional">
-    <div class="encrypt-text">
-        <form class="input-text" asp-action="EncryptText" asp-controller="Home" method="post">
-            <textarea class="input-text" name="encryptText"></textarea>
-            <input class="btn" type="submit" value="Encrypt text" />
-        </form>
-    </div>
-    <div class="decrypt-text">
-        <form class="output-text" asp-action="DecryptText" asp-controller="Home" method="get">
-            <textarea class="output-text">@CryptographicProgram.Controllers.HomeController.DecryptImageText</textarea>
-            <button class="btn">Decrypt text</button>
-        </form>
-    </div>
-</div>
-
-<environment include="Development">
+﻿<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Cryptographic Page</title>
     <link rel="stylesheet" href="~/css/cryptographicPageStyle.css" />
-</environment>
+</head>
+<body>
+    <div class="image-container default-image">
+        <img src=@CryptographicProgram.Controllers.HomeController.ImagePath alt="Download image!">
+    </div>
+
+    <hr class="hr-line">
+
+    <div class="input-image">
+        <form asp-action="AddFile" asp-controller="Home" method="post" enctype="multipart/form-data">
+            <input class="file_upload" type="file" name="uploadedFile" />
+            <input class="btn" type="submit" value="Save image" />
+        </form>
+        <a href=@CryptographicProgram.Controllers.HomeController.ImagePath download="image">
+            <button class="btn">Download image</button>
+        </a>
+    </div>
+
+    <hr class="hr-line">
+
+    <div class="main-functional">
+        <div class="encrypt-text">
+            <form class="input-text" asp-action="EncryptText" asp-controller="Home" method="post">
+                <textarea class="input-text" name="encryptText"></textarea>
+                <input class="btn" type="submit" value="Encrypt text" />
+            </form>
+        </div>
+        <div class="decrypt-text">
+            <form class="output-text" asp-action="DecryptText" asp-controller="Home" method="get">
+                <textarea class="output-text">@CryptographicProgram.Controllers.HomeController.DecryptImageText</textarea>
+                <button class="btn">Decrypt text</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
