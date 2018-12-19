@@ -29,8 +29,6 @@ namespace CryptographicProgram.Algorithms.Implementations
 				}
 			}
 
-			bitmap.Save(Guid.NewGuid().ToString() + ".bmp", System.Drawing.Imaging.ImageFormat.Bmp);
-
 			return bitmap;
 		}
 
