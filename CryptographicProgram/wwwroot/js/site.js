@@ -1,4 +1,5 @@
-﻿var apiUrl = "http://localhost:44314/api/";
+﻿
+var apiUrl = "http://localhost:44314/api/";
 
 function encodeText() {
     var text = document.querySelector("#encryptText").value;
@@ -8,8 +9,10 @@ function encodeText() {
     };
 
     var url = apiUrl + "Steganography/GetEncode?text=" + text;
-    fetch(url, request);
+    return fetch(url)
+        .then(response.blob);
 }
+
 
 function getText() {
     var request = {
@@ -17,9 +20,8 @@ function getText() {
     };
 
     var url = apiUrl + "Steganography/SecretText";
-    fetch(url, request)
-        .then(response => console.log(response.json()));
 
-    var textArea = document.querySelector("#decryptText");
-    textArea.value = "Kek";
+    fetch(url, request)
+        .then(response => response.json())
+        .then(data => document.querySelector("#decryptText").value = data.text);
 }
