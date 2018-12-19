@@ -19,7 +19,7 @@ namespace CryptographicProgram
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddMvc();
-			services.AddScoped<ISteganographyAlgorithm, Lsb>();
+			services.AddScoped<ISteganographyAlgorithm, SimpleLsb>();
 		}
 
 		public void Configure(IApplicationBuilder app, IHostingEnvironment env)
