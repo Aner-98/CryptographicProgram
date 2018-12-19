@@ -9,7 +9,7 @@ namespace CryptographicProgram.Controllers
 {
 	public class HomeController : Controller
 	{
-		IHostingEnvironment _appEnvironment;
+		private static IHostingEnvironment _appEnvironment;
 
 		public static string ImagePath { get; set; } = "/images/image.jpg";
 		public static string DecryptImageText { get; set; }
@@ -30,7 +30,7 @@ namespace CryptographicProgram.Controllers
 		{
 			if (uploadedFile != null)
 			{
-				ImagePath = "/images/" + uploadedFile.FileName;
+				ImagePath = _appEnvironment.WebRootPath + "/images/" + uploadedFile.FileName;
 				using (var fileStream = new FileStream(_appEnvironment.WebRootPath + ImagePath, FileMode.Create))
 				{
 					await uploadedFile.CopyToAsync(fileStream);
