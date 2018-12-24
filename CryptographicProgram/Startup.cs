@@ -20,6 +20,7 @@ namespace CryptographicProgram
 
 		public void ConfigureServices(IServiceCollection services)
 		{
+			services.AddCors();
 			services.AddMvc();
 			services.AddScoped<ISteganographyAlgorithm, SimpleLsb>();
 			services.AddScoped<IAlgorithmFactory, AlgorithmFactory>();

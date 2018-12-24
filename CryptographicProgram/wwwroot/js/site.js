@@ -1,5 +1,7 @@
-﻿
-var apiUrl = "http://localhost:44314/api/";
+﻿var localApiUrl = "http://localhost:44314/api/";
+var prodApiUrl = "https://fedeleshandlesivcryptoprogram.azurewebsites.net/api/";
+
+apiUrl = prodApiUrl;
 
 function encodeText() {
     var text = document.querySelector("#encryptText").value;
