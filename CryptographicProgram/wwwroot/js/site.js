@@ -12,6 +12,7 @@ function encodeText() {
 
     var url = apiUrl + "Steganography/GetEncode?text=" + text;
     fetch(url);
+    location.reload();
 }
 
 
