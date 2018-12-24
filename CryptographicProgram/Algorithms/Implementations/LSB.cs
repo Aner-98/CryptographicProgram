@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.IO;
 using CryptographicProgram.Algorithms.Abstractions;
 using CryptographicProgram.Enums;
 
@@ -6,13 +7,14 @@ namespace CryptographicProgram.Algorithms.Implementations
 {
 	public class Lsb : ISteganographyAlgorithm
 	{
-		public Bitmap Encode(Bitmap bitmap, string text)
+		public byte[] Encode(FileInfo fileInfo, string text)
 		{
 			var state = BitmapState.Hiding;
 			var charIndex = 0;
 			var charValue = 0;
 			long pixelElementIndex = 0;
 			var zeros = 0;
+			var bitmap = new Bitmap(fileInfo.FullName);
 
 			for (var i = 0; i < bitmap.Height; i++)
 			{
@@ -33,9 +35,7 @@ namespace CryptographicProgram.Algorithms.Implementations
 								if ((pixelElementIndex - 1) % 3 < 2)
 								{
 									bitmap.SetPixel(j, i, Color.FromArgb(red, green, blue));
-								}
-
-								return bitmap;
+								};
 							}
 
 							if (charIndex >= text.Length)
@@ -92,14 +92,20 @@ namespace CryptographicProgram.Algorithms.Implementations
 					}
 				}
 			}
-			return bitmap;
+
+			using (var stream = new MemoryStream())
+			{
+				bitmap.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+				return stream.ToArray();
+			}
 		}
 
-		public string Decode(Bitmap bitmap)
+		public string Decode(FileInfo fileInfo)
 		{
 			var colorUnitIndex = 0;
 			var charValue = 0;
 			var extractedText = string.Empty;
+			var bitmap = new Bitmap(fileInfo.FullName);
 
 			for (var i = 0; i < bitmap.Height; i++)
 			{

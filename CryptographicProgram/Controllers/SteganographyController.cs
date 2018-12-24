@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Drawing;
+using System.IO;
 using CryptographicProgram.Algorithms.Abstractions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Hosting;
@@ -11,38 +11,46 @@ namespace CryptographicProgram.Controllers
 	[ApiController]
 	public class SteganographyController : ControllerBase
 	{
-		private readonly ISteganographyAlgorithm _steganographyAlgorithm;
+		private ISteganographyAlgorithm _steganographyAlgorithm;
 		private readonly IHostingEnvironment _appEnvironment;
+		private readonly IAlgorithmFactory _algorithmFactory;
 
 
-		public SteganographyController(ISteganographyAlgorithm steganographyAlgorithm, IHostingEnvironment appEnvironment)
+		public SteganographyController(IAlgorithmFactory algorithmFactory, IHostingEnvironment appEnvironment)
 		{
 			_appEnvironment = appEnvironment;
-			_steganographyAlgorithm = steganographyAlgorithm;
+			_algorithmFactory = algorithmFactory;
 		}
 
 		[HttpGet]
 		[Route("GetEncode")]
 		public IActionResult EncodeText([FromQuery]string text)
 		{
-			var path = _appEnvironment.WebRootPath + HomeController.ImagePath;
-			var bitmap = _steganographyAlgorithm.Encode(new Bitmap(path), text);
+			var file = new FileInfo(_appEnvironment.WebRootPath + HomeController.ImagePath);
+			var extension = file.Extension.ToLower() == ".gif" ? ".gif" : ".bmp";
+			_steganographyAlgorithm = _algorithmFactory.GetAlgorithm(extension);
 
-			var fileName = Guid.NewGuid().ToString() + ".bmp";
-			var filePath = _appEnvironment.WebRootPath + @"\images\" + fileName;
+			var fileBytes = _steganographyAlgorithm.Encode(file, text);
 
-			bitmap.Save(filePath, System.Drawing.Imaging.ImageFormat.Bmp);
-			HomeController.ImagePath = "/images/" + fileName;
 
-			var image = System.IO.File.OpenRead(filePath);
-			return File(image, "image/jpeg");
+			var newFileName = Guid.NewGuid().ToString() + extension;
+			var newFilePath = _appEnvironment.WebRootPath + @"\images\" + newFileName;
+
+			System.IO.File.WriteAllBytes(newFilePath, fileBytes);
+
+			HomeController.ImagePath = "/images/" + newFileName;
+			return Ok();
 		}
 
 		[HttpGet]
 		[Route("SecretText")]
 		public IActionResult GetSecretText()
 		{
-			return Ok(new { text = _steganographyAlgorithm.Decode(new Bitmap(_appEnvironment.WebRootPath + HomeController.ImagePath)) });
+			var file = new FileInfo(_appEnvironment.WebRootPath + HomeController.ImagePath);
+			var extension = file.Extension.ToLower() == ".gif" ? ".gif" : ".bmp";
+			_steganographyAlgorithm = _algorithmFactory.GetAlgorithm(extension);
+
+			return Ok(new { text = _steganographyAlgorithm.Decode(file) });
 		}
 	}
 }

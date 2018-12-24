@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Drawing;
+using System.IO;
 using CryptographicProgram.Algorithms.Abstractions;
 
 namespace CryptographicProgram.Algorithms.Implementations
 {
 	public class SimpleLsb : ISteganographyAlgorithm
 	{
-		public Bitmap Encode(Bitmap bitmap, string text)
+		public byte[] Encode(FileInfo fileInfo, string text)
 		{
+			var bitmap = new Bitmap(fileInfo.FullName);
+
 			for (var i = 0; i < bitmap.Width; i++)
 			{
 				for (var j = 0; j < bitmap.Height; j++)
@@ -29,11 +32,16 @@ namespace CryptographicProgram.Algorithms.Implementations
 				}
 			}
 
-			return bitmap;
+			using (var stream = new MemoryStream())
+			{
+				bitmap.Save(stream, System.Drawing.Imaging.ImageFormat.Bmp);
+				return stream.ToArray();
+			}
 		}
 
-		public string Decode(Bitmap bitmap)
+		public string Decode(FileInfo fileInfo)
 		{
+			var bitmap = new Bitmap(fileInfo.FullName);
 			var message = "";
 
 			var lastPixel = bitmap.GetPixel(bitmap.Width - 1, bitmap.Height - 1);

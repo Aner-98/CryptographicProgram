@@ -10,7 +10,7 @@ namespace CryptographicProgram.Controllers
 	{
 		private static IHostingEnvironment _appEnvironment;
 
-		public static string ImagePath { get; set; } = "/images/image.jpg";
+		public static string ImagePath { get; set; } = "/images/image2.gif";
 		public static string DecryptImageText { get; set; }
 		public static string EncryptImageText { get; set; }
 

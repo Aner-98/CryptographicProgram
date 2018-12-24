@@ -9,8 +9,7 @@ function encodeText() {
     };
 
     var url = apiUrl + "Steganography/GetEncode?text=" + text;
-    return fetch(url)
-        .then(response.blob);
+    fetch(url);
 }
 
 

@@ -1,10 +1,10 @@
-﻿using System.Drawing;
+﻿using System.IO;
 
 namespace CryptographicProgram.Algorithms.Abstractions
 {
 	public interface ISteganographyAlgorithm
 	{
-		Bitmap Encode(Bitmap bitmap, string text);
-		string Decode(Bitmap bitmap);
+		byte[] Encode(FileInfo fileInfo, string text);
+		string Decode(FileInfo fileInfo);
 	}
 }
