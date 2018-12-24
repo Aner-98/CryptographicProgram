@@ -29,27 +29,12 @@ namespace CryptographicProgram.Controllers
 		{
 			if (uploadedFile != null)
 			{
-				ImagePath = _appEnvironment.WebRootPath + "/images/" + uploadedFile.FileName;
+				ImagePath = "/images/" + uploadedFile.FileName;				
 				using (var fileStream = new FileStream(_appEnvironment.WebRootPath + ImagePath, FileMode.Create))
 				{
 					await uploadedFile.CopyToAsync(fileStream);
 				}
 			}
-
-			return RedirectToAction("Index");
-		}
-
-		[HttpPost]
-		public IActionResult EncryptText(string encryptText)
-		{
-			EncryptImageText = encryptText;
-			return RedirectToAction("Index");
-		}
-
-		[HttpGet]
-		public IActionResult DecryptText()
-		{
-			DecryptImageText = "Hello";
 			return RedirectToAction("Index");
 		}
 	}
