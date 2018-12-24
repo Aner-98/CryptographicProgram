@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
+using System.IO.Enumeration;
 
 namespace CryptographicProgram.Controllers
 {
@@ -29,7 +30,14 @@ namespace CryptographicProgram.Controllers
 		{
 			if (uploadedFile != null)
 			{
-				ImagePath = "/images/" + uploadedFile.FileName;				
+				var fileName = uploadedFile.FileName;
+
+				if (string.IsNullOrWhiteSpace(fileName))
+				{
+					fileName = fileName?.Replace(' ', '_');
+				}
+
+				ImagePath = "/images/" + fileName;				
 				using (var fileStream = new FileStream(_appEnvironment.WebRootPath + ImagePath, FileMode.Create))
 				{
 					await uploadedFile.CopyToAsync(fileStream);
